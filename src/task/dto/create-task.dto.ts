@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsMongoId, IsOptional } from 'class-validator';
 
 export class SubTaskDto {
   @ApiProperty({ description: 'The title of the subtask', required: true })
@@ -22,6 +23,7 @@ export class CreateTaskDto {
     description: 'The ID of the user creating the task',
     type: String,
   })
+  @IsMongoId()
   readonly userId: string;
 
   @ApiProperty({ description: 'The title of the task', required: true })
@@ -53,5 +55,6 @@ export class CreateTaskDto {
     required: false,
     default: SubTaskDto,
   })
+  @IsOptional()
   readonly subTasks?: SubTaskDto[];
 }

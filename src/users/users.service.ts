@@ -30,7 +30,7 @@ export class UsersService {
     return result;
   }
 
-  remove(id: string) {
+  async remove(id: string) {
     return this.userModel.findByIdAndDelete(id).exec();
   }
 }
